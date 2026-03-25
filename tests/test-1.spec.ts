@@ -1,3 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './custom-test';
 
-test('add a widget', async ({ page }) => {});
+test('add a widget', async ({ dashboardPage, page }) => {
+  dashboardPage.navigateToAddWidget();
+
+  await expect(
+    page.getByRole('heading', { name: 'Connect your data' }),
+  ).toBeVisible();
+});
