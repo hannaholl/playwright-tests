@@ -20,7 +20,7 @@ export class DashboardPage {
     this.createdDashboardIds = [];
 
     this.dashboardWrapper = page.locator('#dashboard-frame');
-    this.addDashboardButton = this.page.getByRole('button', {
+    this.addDashboardButton = page.getByRole('button', {
       name: 'New',
       exact: true,
     });
