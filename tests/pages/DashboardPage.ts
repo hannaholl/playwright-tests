@@ -14,9 +14,12 @@ export class DashboardPage {
   private readonly addWidgetButton: Locator;
   private readonly createdDashboardIds: string[];
 
+  public readonly dashboardWrapper: Locator;
+
   constructor(public readonly page: Page) {
     this.createdDashboardIds = [];
 
+    this.dashboardWrapper = page.locator('#dashboard-frame');
     this.addDashboardButton = this.page.getByRole('button', {
       name: 'New',
       exact: true,
@@ -59,6 +62,7 @@ export class DashboardPage {
 
     this.createdDashboardIds.push(this.getCurrentDashboardId());
 
+    // Rename dashboard, we don't have accessible selectors for this
     await this.page.locator("label[class*='editable']").click();
     await this.page.locator("textarea[class^='editableInput']").fill(name);
   }
